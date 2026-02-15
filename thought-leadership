@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivasankari Bhuvaneswaran - Thought Leadership Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #ffffff;
+            --accent: #0066cc;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666666;
+            --spacing: 1rem;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: var(--secondary);
+            padding: 6rem var(--spacing) 4rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        header .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        header .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--light-gray);
+            padding: 1.5rem var(--spacing);
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+
+        /* Section */
+        section {
+            padding: 4rem var(--spacing);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .article-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--medium-gray);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .article-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: var(--primary);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+        }
+
+        .platform {
+            background-color: var(--accent);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .article-description {
+            flex-grow: 1;
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .article-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .article-link::after {
+            content: ' →';
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .article-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-item {
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expertise-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .expertise-item p {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--secondary);
+            text-align: center;
+            padding: 3rem var(--spacing);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header .tagline {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                margin: 0 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Shivasankari Bhuvaneswaran</h1>
+        <p class="tagline">Strategic Business Writer | Thought Leader | Enterprise Transformation</p>
+        <div class="expertise-tags">
+            <span class="tag">Global Capability Centers</span>
+            <span class="tag">Marketplace Platforms</span>
+            <span class="tag">Finance & Risk</span>
+            <span class="tag">Technology Leadership</span>
+            <span class="tag">Telecom Strategy</span>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#articles">Articles</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#stats">Portfolio</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Articles Section -->
+        <section id="articles">
+            <h2>Published Thought Leadership</h2>
+            
+            <h3 style="font-size: 1.3rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary);">Global Capability Centers & Organizational Models</h3>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>Global Capability Centers Surge Ahead as Enterprises Navigate Economic Headwinds</h3>
+                    <div class="article-meta">
+                        <span class="platform">Torry Harris</span>
+                        <span>2025</span>
+                    </div>
+                    <p class="article-description">Modern GCCs function as strategic instruments of resilience and competitive differentiation, enabling enterprises to distribute operational risk while accelerating innovation through AI adoption.</p>
+                    <a href="https://www.torryharris.com/insights/articles/global-capability-centers-enterprise-growth-economic-headwinds" class="article-link" target="_blank">Read Article</a>
+                </div>
+
+                <div class="article-card">
+                    <h3>Why the C-Suite Is Turning to Micro-GCCs?</h3>
+                    <div class="article-meta">
+                        <span class="platform">LinkedIn</span>
+                        <span>Dec 2025</span>
+                    </div>
+                    <p class="article-description">Micro-GCCs represent a fundamental shift in capability building. Organizations deploy compact, high-velocity teams designed for rapid experimentation and validated learning.</p>
+                    <a href="https://www.linkedin.com/pulse/why-c-suite-turning-micro-gccs-torry-harris-integration-solutions-6becc" class="article-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.3rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary);">Marketplace Platforms & Ecosystem Strategy</h3>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>From Network Owner to Platform Orchestrator: What Wholesale Broadband Marketplace Unlocks</h3>
+                    <div class="article-meta">
+                        <span class="platform">TM Forum</span>
+                        <span>Dec 2025</span>
+                    </div>
+                    <p class="article-description">Digital marketplace ecosystems enable providers to transition from static bilateral agreements to dynamic, on-demand service delivery with multiple revenue streams.</p>
+                    <a href="https://inform.tmforum.org/features-and-opinion/from-network-owner-to-platform-orchestrator-what-wholesale-broadband-marketplace-unlocks" class="article-link" target="_blank">Read Article</a>
+                </div>
+
+                <div class="article-card">
+                    <h3>Monetizing Network & Data APIs: The Operator's API Platform Play</h3>
+                    <div class="article-meta">
+                        <span class="platform">Torry Harris</span>
+                        <span>Jan 2026</span>
+                    </div>
+                    <p class="article-description">Telecommunications operators can monetize network capabilities through APIs by addressing organizational and commercial barriers with a practical 12-month roadmap.</p>
+                    <a href="https://www.torryharris.com/insights/articles/monetizing-network-and-data-apis" class="article-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.3rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary);">Finance & Risk Management</h3>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>The CFO's Guide to Integrated Risk Management</h3>
+                    <div class="article-meta">
+                        <span class="platform">Cogneesol</span>
+                        <span>Jan 2026</span>
+                    </div>
+                    <p class="article-description">A practical framework for CFOs to transition from fragmented risk management to integrated risk management embedded in organizational strategy and daily operations.</p>
+                    <a href="https://www.cogneesol.com/blog/the-cfos-guide-to-integrated-risk-management" class="article-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.3rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary);">Technology Leadership & Digital Transformation</h3>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>Personal Branding for CIOs: How to Become a Thought Leader</h3>
+                    <div class="article-meta">
+                        <span class="platform">Purple Iris</span>
+                        <span>Oct 2025</span>
+                    </div>
+                    <p class="article-description">A three-pillar framework for building authentic personal brands that resonate with boards, peers, and industry stakeholders through consistency and credibility.</p>
+                    <a href="https://purpleiriscomms.com/personal-branding-for-cios-how-to-become-a-thought-leader/" class="article-link" target="_blank">Read Article</a>
+                </div>
+
+                <div class="article-card">
+                    <h3>7 High-Impact Ways AI & Analytics Are Re-shaping Mortgage Lending</h3>
+                    <div class="article-meta">
+                        <span class="platform">WNS</span>
+                        <span>Oct 2025</span>
+                    </div>
+                    <p class="article-description">AI and analytics are transforming mortgage lending from underwriting to customer experience with measurable business impact and governance considerations.</p>
+                    <a href="https://www.wns.com/perspectives/articles/7-high-impact-ways-ai-analytics-are-re-shaping-mortgage-lending" class="article-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.3rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary);">Energy & Utilities Sector Strategy</h3>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>How E&U Leaders Can Turn Trump's Tariffs and Policy Headwinds into a Strategic Advantage</h3>
+                    <div class="article-meta">
+                        <span class="platform">WNS</span>
+                        <span>Apr 2025</span>
+                    </div>
+                    <p class="article-description">Energy and utilities executives can reposition their organizations to capture strategic advantage through operational efficiency improvements and supply chain diversification.</p>
+                    <a href="https://www.wns.com/perspectives/blogs/how-e-u-leaders-can-turn-trumps-tariffs-and-policy-headwinds-into-a-strategic-advantage" class="article-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise">
+            <h2>Core Expertise</h2>
+            <div class="expertise-section">
+                <div class="expertise-item">
+                    <h3>Organizational Transformation</h3>
+                    <p>Deep expertise in GCC models, micro-GCC innovation, and distributed capability networks. Balancing scale with agility and innovation with operational excellence.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>Platform & Ecosystem Strategy</h3>
+                    <p>Strategic perspective on marketplace orchestration, API monetization, B2B2X models, and ecosystem value creation across industries.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>Finance & Risk Management</h3>
+                    <p>Comprehensive understanding of integrated risk management, AI adoption in finance, digital transformation readiness, and financial resilience.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>Technology Leadership</h3>
+                    <p>Thought leadership on personal branding, translating technical expertise into business impact, and leading through technological change.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>Industry-Specific Transformation</h3>
+                    <p>Sector expertise in energy & utilities, financial services, telecommunications, and mortgage lending with strategic differentiation focus.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats">
+            <h2>Career Overview</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">Published Articles</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Publication Platforms</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Expertise Domains</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <div class="about-content">
+                <p>Strategic business writer and thought leader specializing in organizational transformation, enterprise strategy, and digital innovation. Published across leading platforms including Torry Harris, TM Forum, Cogneesol, WNS, and Purple Iris Communications.</p>
+                <p>With expertise spanning Global Capability Centers, marketplace platforms, finance transformation, and technology leadership, I contribute to publications reaching executive audiences across multiple industries. My writing combines strategic insight with practical frameworks, grounded in real-world enterprise challenges and industry best practices.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Shivasankari Bhuvaneswaran. All rights reserved.</p>
+        <p>Portfolio Last Updated: February 15, 2026</p>
+    </footer>
+</body>
+</html>
